@@ -22,7 +22,7 @@ bpy.ops.object.delete(use_global=False)
 
 bpy.ops.import_scene.fbx(filepath='{openFilePath}')
 ";
-        Debug.LogError(pythonCode.Replace("\n\n", "\n").Replace("\n", "; "));
+        //Debug.LogError(pythonCode.Replace("\n\n", "\n").Replace("\n", "; "));
         using var process = Process.Start(Preference.instance.BlenderPath, @$"--python-expr ""{pythonCode.Replace("\n\n", "\n").Replace("\n", "; ")}""");
     }
 }
