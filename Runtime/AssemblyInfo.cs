@@ -1,1 +1,0 @@
-﻿[assembly: InternalsVisibleTo("numeira.blender-is-your-best-friend.editor")]
