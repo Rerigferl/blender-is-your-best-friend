@@ -10,7 +10,7 @@ internal static class Blender
 {
     public static void Launch(string openFilePath)
     {
-        if (string.IsNullOrEmpty(Preference.instance.BlenderPath))
+        if (string.IsNullOrEmpty(Preference.Instance.BlenderPath))
         {
             if (!Menu.SelectBlender())
                 return;
@@ -23,7 +23,7 @@ bpy.ops.object.delete(use_global=False)
 bpy.ops.import_scene.fbx(filepath='{openFilePath}')
 ";
         //Debug.LogError(pythonCode.Replace("\n\n", "\n").Replace("\n", "; "));
-        using var process = Process.Start(Preference.instance.BlenderPath, @$"--python-expr ""{pythonCode.Replace("\n\n", "\n").Replace("\n", "; ")}""");
+        using var process = Process.Start(Preference.Instance.BlenderPath, @$"--python-expr ""{pythonCode.Replace("\n\n", "\n").Replace("\n", "; ")}""");
     }
 }
 
@@ -55,7 +55,7 @@ internal static class Menu
         var path = EditorUtility.OpenFilePanel("Select Blender Execution File", @"C:\Program Files\Blender Foundation\", "exe");
         if (string.IsNullOrEmpty(path))
             return false;
-        Preference.instance.BlenderPath = path;
+        Preference.Instance.BlenderPath = path;
         Preference.Save();
         return true;
     }
